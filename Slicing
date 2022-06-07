@@ -1,0 +1,9 @@
+An agent job can be used to run a suite of tests in parallel. For example, you can run a large suite of 1000 tests on a single agent. Or, 
+you can use two agents and run 500 tests on each one in parallel.
+To leverage slicing, the tasks in the job should be smart enough to understand the slice they belong to.
+
+
+jobs:
+- job: Test
+  strategy:
+    parallel: 5
