@@ -1,0 +1,16 @@
+When you run an agent pool job, it creates a workspace on the agent. The workspace is a directory in which it downloads the source, runs steps, and produces outputs
+
+Build.SourcesDirectory is where tasks download the application's source code.
+Build.ArtifactStagingDirectory is where tasks download artifacts needed for the pipeline or upload artifacts before they are published.
+Build.BinariesDirectory is where tasks write their outputs.
+Common.TestResultsDirectory is where tasks upload their test results.
+
+The workspace clean options are applicable only for self-hosted agents. When using Microsoft-hosted agents, job are always run on a new agent.
+
+jobs:
+  - deployment: deploy
+    pool:
+      vmImage: 'ubuntu-latest'
+    workspace:
+      clean: all
+    environment: staging
